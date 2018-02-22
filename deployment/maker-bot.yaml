@@ -9,8 +9,8 @@ spec:
       labels:
         app: maker-bot
         version: v1
-      annotations:
-        sidecar.istio.io/inject: "false"
+#      annotations:
+#        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: maker-bot
