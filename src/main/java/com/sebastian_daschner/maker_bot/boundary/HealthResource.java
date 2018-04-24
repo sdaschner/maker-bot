@@ -1,4 +1,4 @@
-package com.sebastian_daschner.maker_bot;
+package com.sebastian_daschner.maker_bot.boundary;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
