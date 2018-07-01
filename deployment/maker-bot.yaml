@@ -10,7 +10,6 @@ spec:
   ports:
     - port: 9080
       name: http
-  type: NodePort
 ---
 kind: Deployment
 apiVersion: apps/v1beta1
@@ -28,6 +27,8 @@ spec:
       - name: maker-bot
         image: docker.sebastian-daschner.com/maker-bot:1
         imagePullPolicy: Always
+        ports:
+        - containerPort: 9080
         livenessProbe:
           exec:
             command:
@@ -46,18 +47,18 @@ spec:
       - name: regsecret
       restartPolicy: Always
 ---
-kind: Ingress
-apiVersion: extensions/v1beta1
-metadata:
-  name: maker-bot
-  annotations:
-    kubernetes.io/ingress.class: istio
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /maker-bot/.*
-        backend:
-          serviceName: maker-bot
-          servicePort: 9080
----
+#kind: Ingress
+#apiVersion: extensions/v1beta1
+#metadata:
+#  name: maker-bot
+#  annotations:
+#    kubernetes.io/ingress.class: istio
+#spec:
+#  rules:
+#  - http:
+#      paths:
+#      - path: /maker-bot/.*
+#        backend:
+#          serviceName: maker-bot
+#          servicePort: 9080
+#---
